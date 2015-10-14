@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+	<meta charset ="utf-8" />
+	<title> About US </title>
+	<link rel = "stylesheet" type = "text/css" href ="contactstylesheet.css">
+</head>
+
+<body>
+    <h1>Feedback</h1>
+    <form action="mailer.php" method="POST">
+        <div>
+            <p>Name</p>
+            <input name="name" type="text"> <br> </div>
+            <div>
+            <p>E-Mail (Optional)</p>
+            <input name="email" type="text">
+            <br>
+            </div>
+            <div>
+            <p>Comment</p>
+            <textarea cols="30" name="comment" rows="9"></textarea>
+            <br> </div>
+        <div>
+        <input name="submit" type="submit" value="Send!"> </div>
+    </form>
+</body>
+</html>
