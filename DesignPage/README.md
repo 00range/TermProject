@@ -1,4 +1,4 @@
-**This project is using aspects form CustomTShirt as the backbone**
+**This project is using aspects from CustomTShirt as the backbone**
 
 CustomTShirt
 ============
