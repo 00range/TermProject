@@ -1,3 +1,5 @@
+**This project is using aspects form CustomTShirt as the backbone**
+
 CustomTShirt
 ============
 
