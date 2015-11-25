@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Contact Us</title>
+		<meta charset = "utf-8">
+		<link rel = "stylesheet" type = "text/css" href = "style.css"/>
+		<script>
+		function validateForm(){
+				var reName = /^[a-z ,.'-]+$/i;
+				var reEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+				var errors = [];
+				
+				var flName = document.forms["contactUs"]["name"].value;
+				var mail = document.forms["contactUs"]["email"].value;
+				
+				if (!reName.test(flName)){
+					errors[errors.length] = "Name is incorrect.";
+					document.getElementById('name').style.border = "thick solid red";
+				}
+				else
+					document.getElementById('name').style.border= "";
+				
+				if (!reEmail.test(mail)){
+					errors[errors.length] = "Email is incorrect.";
+					document.getElementById('email').style.border = "thick solid red";
+				}
+				else
+					document.getElementById('email').style.border= "";
+				
+				if (errors.length > 0) {
+					reportErrors(errors);
+					return false;
+				}
+				
+				return clickSubmit();
+			}
+			
+			function reportErrors(errors){
+				var msg = "Please enter valid data...\n";
+				for (var i = 0; i<errors.length; i++) {
+					var numError = i + 1;
+					msg += "\n" + numError + ". " + errors[i];
+				}
+				alert(msg);
+			}
+			
+			function clickSubmit(){
+				alert("Thank you for your feedback.");
+			}
+		</script>
+	</head>
+    
+    <body>
+        <div class = "header">
+            <div class = "headerContent">
+                <a href = "home.html">
+                    <img src = "logo.png" alt = "U.S. Custom Shirts Logo" title = "U.S. Custom Shirts Logo"/>
+                </a>
+                <div class = "menu-wrap">
+                    <nav class = "menu">
+                        <ul class = "clearfix">
+                            <li><a href = "home.html">Home</a></li>
+                            <li><a href = "#">Templates</a></li>
+                            <li><a href = "#">Design</a></li>
+                            <li title = "View past designs.">Gallery
+                                <ul class = "dropdown">
+                                    <li><a href = "shirtGallery.html">T-Shirts</a></li>
+                                    <li><a href = "#">Sweatshirts</a></li>
+                                    <li><a href = "#">Pants</a></li>
+                                </ul>
+                            </li>
+                            <li><a href = "contact.html">Contact Us</a></li>
+                            <li><a href = "#">About Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class = "headerBreak"></div>
+            </div>
+        </div>
+		
+		<h1>Contact Us</h1>
+		
+		<div class="form">
+			<form id="contactUs" name="contactUs" action="" method="post" onsubmit="return validateForm();">
+				<fieldset>
+					<div class= "form-group">
+						<label>Name:</label>
+							<input type="text" id="name" name="name" class="txt-field" placeholder="Enter your name..." required>
+					</div>
+					<div class= "form-group">
+						<label>E-mail:</label>
+							<input type="e-mail" id="email" name="email" class="txt-field" placeholder="Enter your email..." required>
+					</div>
+					<div class= "form-group">
+						<label>Comments/Notes:</label>
+							<textarea name="comments" rows="4" cols="50" placeholder="Enter comments/notes here..." required></textarea>
+					</div>
+					<input value="Submit" type="submit" class="btn">
+				</fieldset>
+			</form>
+		</div>
+		
+        
+	</body>
+</html>
