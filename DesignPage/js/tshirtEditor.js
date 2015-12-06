@@ -425,7 +425,7 @@ var line4;
 	 }
 	 
     function saveDesign(){ 
-		var widget = document.getElementById("widget");
+		var widget = document.getElementById("shirtDiv");
         html2canvas((widget), {
             onrendered: function(canvas) {
                 canvas.toBlob(function(blob) {
