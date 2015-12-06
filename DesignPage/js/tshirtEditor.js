@@ -98,7 +98,8 @@ var line4;
 		            cornersize: 10,
 	      	  		hasRotatingPoint:true
 		          });
-				  //image.scale(getRandomNum(0.2, 0.21)).setCoords();
+				  if(image.width > 100)
+					image.scale(getRandomNum(0.2, 0.21)).setCoords();
 		          canvas.add(image);
 		        });
 	  	});
@@ -291,13 +292,19 @@ var line4;
 			   var selection = document.getElementById("shirt-style").value;
 			   var sel = document.getElementById('shirt-style');
 			   var crew = sel.options[0];
+			   var mLong = sel.options[1];
 			   var hoodie = sel.options[2];
+			   var tank = sel.options[3];
+			   var wCrew = sel.options[4];
 			   
 			   	if ($(this).attr("data-original-title") == "Show Back View") {
 			   		$(this).attr("data-original-title", "Show Front View");
 					
 					crew.setAttribute('data-value', 'img/crew_back.png');
+					mLong.setAttribute('data-value', 'img/mens_longsleeve_back.png');
 					hoodie.setAttribute('data-value', 'img/hoodie_back.png');
+					tank.setAttribute('data-value', 'img/mens_tank_back.png');
+					wCrew.setAttribute('data-value', 'img/womens_crew_back.png');
 					
 					if (selection == 1){
 						$("#tshirtFacing").attr("src","img/crew_back.png");						
@@ -330,7 +337,10 @@ var line4;
 			    	$(this).attr("data-original-title", "Show Back View");
 					
 					crew.setAttribute('data-value', 'img/crew_front.png');
+					mLong.setAttribute('data-value', 'img/mens_longsleeve_front.png');
 					hoodie.setAttribute('data-value', 'img/hoodie_front.png');
+					tank.setAttribute('data-value', 'img/mens_tank_front.png');
+					wCrew.setAttribute('data-value', 'img/womens_crew_front.png');
 					
 					if (selection == 1){
 						$("#tshirtFacing").attr("src","img/crew_front.png");						
@@ -376,7 +386,13 @@ var line4;
 	 }
 	 
 	 function addImageURL(){
-		 var image = document.createElement("img");
+		 var addedImage = document.getElementById("addedImage");
+		 addedImage.src = document.getElementById("imageURL").value;
+		 addedImage.removeAttribute("style");
+		 addedImage.setAttribute("style", "cursor:pointer");
+		 addedImage.setAttribute("width", "96");
+		 addedImage.setAttribute("height", "96");
+		 /*var image = document.createElement("img");
 		 image.src = document.getElementById("imageURL").value;
 		 image.setAttribute("class", "image-polaroid");
 		 image.setAttribute("style", "cursor:pointer;");
@@ -387,7 +403,7 @@ var line4;
 		 
 		 $(".image-polaroid").click(function(e){
 	  		var el = e.target;
-	  		/*temp code*/
+	  		/*temp code
 	  		var offset = 50;
 	        var left = fabric.util.getRandomInt(0 + offset, 200 - offset);
 	        var top = fabric.util.getRandomInt(0 + offset, 400 - offset);
@@ -407,19 +423,18 @@ var line4;
 				  image.scale(getRandomNum(0.2, 0.21)).setCoords();
 		          canvas.add(image);
 		        });
-	  	 });
+	  	 });*/
 		 
 		 document.getElementById("imgURL").value="";
 		
 		//these two lines don't do what I expected
-		var imgTab = getElementById("tab2");
-		imgTab.setAttribute("class", "tab-pane active");
+		getElementById("tab2").setAttribute("class", "tab-pane active");
 	 }
 	 
 	 function saveCanvas(){
 		var canvas = document.getElementById("tcanvas"), ctx = canvas.getContext("2d");
 		canvas.toBlob(function(blob) {
-			saveAs(blob, "Your design");
+			saveAs(blob, "design.png");
 		 });
 		 
 	 }
@@ -429,7 +444,7 @@ var line4;
         html2canvas((widget), {
             onrendered: function(canvas) {
                 canvas.toBlob(function(blob) {
-                    saveAs(blob, "Your clothing.png"); 
+                    saveAs(blob, "clothing.png"); 
                 });
             }
         });
