@@ -428,7 +428,7 @@ var line4;
 		 document.getElementById("imgURL").value="";
 		
 		//these two lines don't do what I expected
-		getElementById("tab2").setAttribute("class", "tab-pane active");
+		document.getElementById("tab2").setAttribute("class", "tab-pane active");
 	 }
 	 
 	 function saveCanvas(){
@@ -448,8 +448,7 @@ var line4;
                 });
             }
         });
-    }
-	
+    }	
 	 
 	 function getRandomNum(min, max) {
 	    return Math.random() * (max - min) + min;
